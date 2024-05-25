@@ -1,6 +1,6 @@
 "use client";
 
-import { Layout, Compass } from "lucide-react";
+import { Layout, Compass, List, BarChart } from "lucide-react";
 
 export const guestRoutes = [
     {
@@ -12,5 +12,18 @@ export const guestRoutes = [
         icon: Compass,
         label: "Browse",
         href: "/search",
+    },
+]
+
+export const teacherRoutes = [
+    {
+        icon: List,
+        label: "Courses",
+        href: "/teacher/courses",
+    },
+    {
+        icon: BarChart,
+        label: "Analytics",
+        href: "/teacher/analytics",
     },
 ]

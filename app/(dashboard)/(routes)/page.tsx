@@ -1,6 +1,6 @@
-import { UserButton } from "@clerk/nextjs/app-beta/client";
+import { UserButton } from "@clerk/nextjs";
 
-export default function Home() {
+export default function Dashboard() {
   return (
     <div>
       <UserButton afterSignOutUrl="/" />

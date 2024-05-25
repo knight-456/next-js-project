@@ -1,17 +1,23 @@
 "use client";
 
-import { guestRoutes } from "./sidebar.data";
+import { useMemo } from "react";
+import { usePathname } from "next/navigation";
+
+import { guestRoutes, teacherRoutes } from "./sidebar.data";
 import SidebarItem from "./SidebarItem";
 
 export const SidebarRoutes = () => {
+    const pathname = usePathname();
 
-    const routes = guestRoutes
+    const isTeacherPage = useMemo(() => pathname?.includes("/teacher"), [pathname]);
+
+    const routes = useMemo(() => isTeacherPage ? teacherRoutes : guestRoutes, [isTeacherPage])
 
     return (
         <div className={"w-full flex flex-col"}>
-            {routes.map((route) => (
+            {routes.map((route, index) => (
                 <SidebarItem
-                    key={route.href}
+                    key={index}
                     icon={route.icon}
                     label={route.label}
                     href={route.href}
