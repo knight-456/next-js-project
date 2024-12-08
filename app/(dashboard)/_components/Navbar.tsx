@@ -2,7 +2,7 @@ import React from 'react';
 
 import MobileSidebar from './MobileSidebar';
 
-import NavbarRoutes from '@/components/ui/appComponents/NavbarRoutes';
+import NavbarRoutes from '@/components/appComponents/NavbarRoutes';
 
 const Navbar = () => {
     return (

@@ -37,12 +37,13 @@ const CreateCoursePage = () => {
         }
     });
 
-    const { isSubmitted, isValid } = form.formState
+    const { isSubmitting, isValid } = form.formState
 
     const onSubmit = async (values: z.infer<typeof formSchema>) => {
         try {
-            const response = await axios.post("/api/course", values);
-            router.push(`/teacher/course/${response.data.id}`)
+            const response = await axios.post("/api/courses", values);
+            router.push(`/teacher/courses/${response.data.data.id}`)
+            toast.success("Course Created");
         } catch {
             toast.error("Something went wrong!")
         }
@@ -72,7 +73,7 @@ const CreateCoursePage = () => {
                                     </FormLabel>
                                     <FormControl>
                                         <Input
-                                            disabled={isSubmitted}
+                                            disabled={isSubmitting}
                                             placeholder={"e.g. 'Advanced web development"}
                                             {...field}
                                         />
@@ -92,7 +93,7 @@ const CreateCoursePage = () => {
                             </Link>
                             <Button
                                 type={"submit"}
-                                disabled={!isValid || isSubmitted}
+                                disabled={!isValid || isSubmitting}
                             >
                                 {"Continue"}
                             </Button>
@@ -104,4 +105,4 @@ const CreateCoursePage = () => {
     )
 }
 
-export default CreateCoursePage
+export default CreateCoursePage;
