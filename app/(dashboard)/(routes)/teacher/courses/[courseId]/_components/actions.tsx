@@ -12,6 +12,8 @@ import ConfirmModal from "@/components/modals/confirm-modal";
 
 import courseService from "@/app/services/course/course.service";
 
+import { useConfettiStore } from "@/hooks/use-confeetti-store";
+
 interface actionsProps {
     disabled: boolean;
     courseId: string;
@@ -21,6 +23,7 @@ interface actionsProps {
 const Actions = ({ disabled, courseId, isPublished }: actionsProps) => {
 
     const router = useRouter()
+    const confetti = useConfettiStore()
 
     const [isLoading, setIsLoading] = useState(false)
 
@@ -38,6 +41,9 @@ const Actions = ({ disabled, courseId, isPublished }: actionsProps) => {
             const response = await courseService.updateCourseDetail(requestData)
             if (response.status === 200) {
                 toast.success(response.data.message)
+                if (response.data.data.isPublished) {
+                    confetti.onOpen()
+                }
                 router.refresh()
             } else {
                 throw new Error("Something went wrong!")
