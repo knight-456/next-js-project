@@ -22,7 +22,7 @@ model Course {
 
   chapters    Chapter[]
   attachments Attachment[]
-  Purchases   Purchase[]
+  purchases   Purchase[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
