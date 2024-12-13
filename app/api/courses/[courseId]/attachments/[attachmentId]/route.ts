@@ -13,7 +13,6 @@ export async function DELETE(
         }
     }
 ) {
-    console.log("api call", params.attachmentId, params.courseId)
     try {
         const { userId } = auth()
 

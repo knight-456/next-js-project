@@ -10,12 +10,15 @@
   },
   "dependencies": {
     "@clerk/nextjs": "^4.25.3",
+    "@hello-pangea/dnd": "^17.0.0",
     "@hookform/resolvers": "^3.4.2",
     "@prisma/client": "^6.0.1",
+    "@radix-ui/react-alert-dialog": "^1.1.2",
+    "@radix-ui/react-checkbox": "^1.1.2",
     "@radix-ui/react-dialog": "^1.1.2",
     "@radix-ui/react-label": "^2.0.2",
     "@radix-ui/react-popover": "^1.1.2",
-    "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-slot": "^1.1.0",
     "@uploadthing/react": "^7.1.2",
     "axios": "^1.7.2",
     "class-variance-authority": "^0.7.0",
@@ -27,6 +30,7 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.5",
     "react-hot-toast": "^2.4.1",
+    "react-quill": "^2.0.0",
     "string-format": "^2.0.0",
     "tailwind-merge": "^1.14.0",
     "tailwindcss-animate": "^1.0.7",
@@ -42,7 +46,7 @@
     "eslint": "^8",
     "eslint-config-next": "13.5.4",
     "postcss": "^8",
-    "prisma": "^5.14.0",
+    "prisma": "^6.0.1",
     "tailwindcss": "^3",
     "typescript": "^5"
   }
