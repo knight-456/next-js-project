@@ -71,7 +71,11 @@ export async function PATCH(
 
 export async function DELETE(
     req: NextRequest,
-    { params }: { params: { courseId: string; } }
+    { params }: {
+        params: {
+            courseId: string
+        }
+    }
 ) {
     try {
         const { userId } = auth()

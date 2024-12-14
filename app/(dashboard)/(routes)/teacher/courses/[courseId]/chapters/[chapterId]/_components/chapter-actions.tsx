@@ -65,7 +65,7 @@ const ChapterActions = ({ disabled, courseId, chapterId, isPublished }: chapterA
             if (response.status === 200) {
                 toast.success(response.data.message || "Chapter deleted")
                 router.refresh()
-                router.push(`/teacher/course/${courseId}`)
+                router.push(`/teacher/courses/${courseId}`)
             } else {
                 throw new Error("Something went wrong!")
             }

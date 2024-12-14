@@ -34,7 +34,7 @@ class CourseService {
     }
 
     deleteCourseDetail = async ({ params }: { params: { courseId: string } }) => {
-        const response = await lmsApiInstance().patch(
+        const response = await lmsApiInstance().delete(
             format(courseUrlEnum.DELETE_COURSE_DETAIL, params)
         )
 
