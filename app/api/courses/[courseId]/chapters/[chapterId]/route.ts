@@ -7,7 +7,6 @@ export async function GET(
     { params }: {
         params: { courseId: string; chapterId: string }
     }) {
-    console.log("request", params)
     try {
         // const { userId } = auth()
 

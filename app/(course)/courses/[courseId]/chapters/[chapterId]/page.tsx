@@ -12,6 +12,7 @@ import Preview from '@/components/appComponents/preview';
 
 import VideoPlayer from './_components/video-player';
 import CourseEnrollButton from './_components/course-enroll-button';
+import CourseProgressButton from './_components/course-progress-button';
 
 import { getChapter } from '@/actions/get-chapter';
 
@@ -84,9 +85,12 @@ const ChapterDetailPage = async ({ params }: chapterDetailProps) => {
                             {chapter.title}
                         </h2>
                         {purchase ? (
-                            <div>
-                                {/* progress button */}
-                            </div>
+                            <CourseProgressButton
+                                chapterId={params.chapterId}
+                                courseId={params.courseId}
+                                nextChapterId={nextChapter?.id}
+                                isCompleted={!!userProgress?.isCompleted}
+                            />
                         ) : (
                             <CourseEnrollButton
                                 courseId={params?.courseId}

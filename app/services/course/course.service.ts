@@ -108,6 +108,25 @@ class CourseService {
 
         return response;
     }
+
+    // chapter progress
+    updateCourseChapterProgress = async ({ params, body }: { params: { courseId: string | string[], chapterId: string | string[] }, body: any }) => {
+        const response = await lmsApiInstance().put(
+            format(courseUrlEnum.UPDATE_COURSE_CHAPTER_PROGRESS, params),
+            body
+        )
+
+        return response;
+    } 
+
+    // course checkout
+    createCourseCheckoutDetail = async ({ params }: { params: { courseId: string } }) => {
+        const response = await lmsApiInstance().post(
+            format(courseUrlEnum.CREATE_COURSE_CHECKOUT_DETAIL, params)
+        )
+
+        return response;
+    }
 }
 
 export default CourseService.courseService

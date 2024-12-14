@@ -4,8 +4,11 @@ import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { IconBadge } from '@/components/appComponents/icon-badge';
 import { BookOpen } from 'lucide-react';
+
+import { IconBadge } from '@/components/appComponents/icon-badge';
+import CourseProgress from '@/components/appComponents/course-progress';
+
 import { formatPrice } from '@/lib/format';
 
 type courseCardProps = {
@@ -55,9 +58,11 @@ const CourseCard = ({
                         </div>
                     </div>
                     {progress !== null ? (
-                        <div>
-                            {"TO DO"}
-                        </div>
+                        <CourseProgress
+                            variant={progress === 100 ? "success" : "default"}
+                            size={"sm"}
+                            value={progress}
+                        />
                     ) : (
                         <p className={"text-md md:text-sm font-medium text-slate-700"}>
                             {formatPrice(price)}

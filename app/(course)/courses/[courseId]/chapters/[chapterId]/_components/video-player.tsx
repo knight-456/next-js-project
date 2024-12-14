@@ -10,6 +10,7 @@ import { Loader2, Lock } from 'lucide-react';
 import { useConfettiStore } from '@/hooks/use-confeetti-store';
 
 import { cn } from '@/lib/utils';
+import courseService from '@/app/services/course/course.service';
 
 interface videoPlayerProps {
     playbackId: string;
@@ -34,6 +35,41 @@ const VideoPlayer = ({
 }: videoPlayerProps) => {
 
     // const [isReady, setIsReady] = useState(false)
+    const router = useRouter()
+    const confetti = useConfettiStore()
+
+    const onEnded = async () => {
+        try {
+            const requestData = {
+                params: {
+                    courseId: courseId,
+                    chapterId: chapterId
+                },
+                body: {
+                    isComplete: true
+                }
+            }
+            if (completionOnEnd) {
+                const response = await courseService.updateCourseChapterProgress(requestData)
+                if (response.status === 200) {
+                    if (!nextChapterId) {
+                        confetti.onOpen()
+                    }
+
+                    toast.success(response.data.message || "Progress updated")
+                    router.refresh()
+
+                    if (nextChapterId) {
+                        router.push(`/courses/${courseId}/chapters/${chapterId}`)
+                    }
+                } else {
+                    throw new Error(response?.data?.message || "Something went wrong")
+                }
+            }
+        } catch {
+            toast.error("Something went wrong!")
+        }
+    }
 
     return (
         <div className={"relative aspect-video"}>
@@ -60,7 +96,7 @@ const VideoPlayer = ({
                         //     !isReady && "hidden"
                         // )}
                         // onCanPlay={() => setIsReady(true)}
-                        onEnded={() => { }}
+                        onEnded={onEnded}
                         autoPlay
                     />
                 </div>
