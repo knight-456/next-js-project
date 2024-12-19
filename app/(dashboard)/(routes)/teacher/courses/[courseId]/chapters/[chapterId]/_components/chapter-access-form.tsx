@@ -87,7 +87,7 @@ const ChapterAccessForm = ({ initialData, courseId, chapterId }: chapterAccessFo
                     "text-sm mt-2",
                     !initialData?.isFree && "text-slate-500 italic"
                 )}>
-                    {!initialData?.isFree
+                    {initialData?.isFree
                         ? <>{"This chapter is free for preview."}</>
                         : <>{"This chapter is not free."}</>
                     }

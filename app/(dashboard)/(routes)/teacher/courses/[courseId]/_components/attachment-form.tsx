@@ -116,7 +116,7 @@ const AttachmentForm = ({ initialData, courseId }: attachmentFormProps) => {
                                         </div>
                                     }
                                     {(deleteAttachment !== attachment?.id) &&
-                                        <button className={"mx-auto hover:opacity-75 transition"} onClick={() => onHandleDelete(attachment?.id)}>
+                                        <button className={"ml-auto hover:opacity-75 transition"} onClick={() => onHandleDelete(attachment?.id)}>
                                             <X className={"w-4 h-4"} />
                                         </button>
                                     }
